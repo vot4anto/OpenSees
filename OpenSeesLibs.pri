@@ -26,9 +26,7 @@ HEADERS += \
 SOURCES += \
    $$PWD/SRC/system_of_eqn/linearSOE/sparseGEN/SuperLU.cpp \
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/OpenSeesLibs/superlu/5.2.1/lib/release/ -lsuperlu
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/OpenSeesLibs/superlu/5.2.1/lib/debug/ -lsuperlu
-else:macx: {
+macx: {
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/SuperLU/Install/lib/ -lsuperlu
 
@@ -37,16 +35,6 @@ INCLUDEPATH += /Users/steve/Desktop/C++Libraries/SuperLU/Install/include
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuperLU/Install/include
 
 PRE_TARGETDEPS += /Users/steve/Desktop/C++Libraries/SuperLU/Install/lib/libsuperlu.a
-
-}
-else:unix: {
-
-LIBS += -L$$PWD/OpenSeesLibs/superlu/Unix/5.2.2/lib/ -lsuperlu
-
-INCLUDEPATH += $$PWD/OpenSeesLibs/superlu/Unix/5.2.2/include/superlu
-DEPENDPATH += $$PWD/OpenSeesLibs/superlu/Unix/5.2.2/include/superlu
-
-PRE_TARGETDEPS += $$PWD/OpenSeesLibs/superlu/Unix/5.2.2/lib/libsuperlu.a
 
 }
 
@@ -58,9 +46,7 @@ HEADERS += \
    $$PWD/SRC/system_of_eqn/linearSOE/sparseGEN/SuperLU_MT_util.h \
    $$PWD/SRC/system_of_eqn/linearSOE/sparseGEN/ThreadedSuperLU.h \
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx:{
+macx:{
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/SuperLUMT/Install/lib/ -lsuperlu_mt_PTHREAD
 
@@ -68,16 +54,6 @@ LIBS += -L/Users/steve/Desktop/C++Libraries/SuperLUMT/Install/lib/ -lsuperlu_mt_
 #DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuperLUMT/Install/SRC
 
 PRE_TARGETDEPS += /Users/steve/Desktop/C++Libraries/SuperLUMT/Install/lib/libsuperlu_mt_PTHREAD.a
-
-}
-else:unix:{
-
-LIBS += -L$$PWD/OpenSeesLibs/superlu_mt/Unix/3.0/lib/ -lsuperlu_mt_PTHREAD
-
-INCLUDEPATH += $$PWD/OpenSeesLibs/superlu_mt/Unix/3.0/include/superlu_mt
-DEPENDPATH += $$PWD/OpenSeesLibs/superlu_mt/Unix/3.0/include/superlu_mt
-
-PRE_TARGETDEPS += $$PWD/OpenSeesLibs/superlu_mt/Unix/3.0/lib/libsuperlu_mt_PTHREAD.a
 
 }
 
@@ -105,9 +81,7 @@ DEFINES += _PARMETIS
 
 }
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/SuperLUDist/Install/lib/ -lsuperlu_dist
 
@@ -116,31 +90,18 @@ DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuperLUDist/Install/include
 
 
 }
-else:unix:{
-
-INCLUDEPATH += $$PWD/OpenSeesLibs/superlu_dist/Unix/5.1.0/include
-DEPENDPATH += $$PWD/OpenSeesLibs/superlu_dist/Unix/5.1.0/include
-
-LIBS += -L$$PWD/OpenSeesLibs/superlu_dist/Unix/5.1.0/lib/ -lsuperlu_dist
-
-}
 
 }
 
 #PARMETIS is an MPI-based parallel library that implements a variety of algorithms for partitioning and repartitioning unstructured graphs and for computing fill-reducing orderings of sparse matrices.
 contains (DEFINES, _PARMETIS){
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/parmetis-4.0.3/Install/lib/ -lparmetis
 
 INCLUDEPATH += /Users/steve/Desktop/C++Libraries/parmetis-4.0.3/Install/include
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/parmetis-4.0.3/Install/include
-
-}
-else:unix:{
 
 }
 
@@ -164,9 +125,7 @@ HEADERS += \
    #$$PWD/SRC/graph/numberer/MetisNumberer.cpp \
 
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L$$PATH_TO_METIS/lib/ -lmetis
 
@@ -176,12 +135,6 @@ INCLUDEPATH +=  $$PATH_TO_METIS \
 DEPENDPATH += $$PATH_TO_METIS/include
 
 }
-else:unix: {
-LIBS += -L
-INCLUDEPATH +=
-DEPENDPATH +=
-}
-
 
 }
 
@@ -203,7 +156,6 @@ SOURCES += \
 
 contains (DEFINES, _ARPACK){
 
-
 HEADERS += \
    $$PWD/SRC/system_of_eqn/eigenSOE/ArpackSOE.h \
    $$PWD/SRC/system_of_eqn/eigenSOE/ArpackSolver.h \
@@ -220,22 +172,11 @@ SOURCES += \
    $$PWD/SRC/system_of_eqn/eigenSOE/SymArpackSOE.cpp \
    $$PWD/SRC/system_of_eqn/eigenSOE/SymArpackSolver.cpp \
 
-
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 LIBS += -L/Users/steve/Desktop/C++Libraries/Arpack/Install/lib/ -larpack.2 -larpack
 INCLUDEPATH += /Users/steve/Desktop/C++Libraries/Arpack/Install/include
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/Arpack/Install/include
 }
-else:unix: {
-LIBS += -L -larpack
-INCLUDEPATH +=
-DEPENDPATH  +=
-}
-
-
-
 
 }
 
@@ -330,9 +271,7 @@ SOURCES += \
    $$PWD/SRC/system_of_eqn/eigenSOE/FullGenEigenSolver.cpp \
    $$PWD/SRC/system_of_eqn/eigenSOE/SymBandEigenSolver.cpp \
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lLAPACK
 
@@ -346,11 +285,6 @@ INCLUDEPATH += /Users/steve/Desktop/C++Libraries/Scalapack/
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/Scalapack/
 
 }
-else:unix: {
-LIBS += -L$$PWD/OpenSeesLibs/scalapack/Unix/2.0.2_15/lib/ -lscalapack
-INCLUDEPATH += $$PWD/OpenSeesLibs/scalapack/Unix/2.0.2_15
-DEPENDPATH += $$PWD/OpenSeesLibs/scalapack/Unix/2.0.2_15
-}
 
 }
 
@@ -358,9 +292,7 @@ DEPENDPATH += $$PWD/OpenSeesLibs/scalapack/Unix/2.0.2_15
 # Using OS X built in library for BLAS
 contains (DEFINES, _CBLAS){
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS
 
@@ -368,10 +300,6 @@ INCLUDEPATH += /System/Library/Frameworks/Accelerate.framework/Versions/A/Framew
 DEPENDPATH += /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A
 
 }
-else:unix: {
-LIBS += -L$$PWD/OpenSeesLibs/openblas/Unix/0.3.6_1/lib/ -lopenblas
-INCLUDEPATH += $$PWD/OpenSeesLibs/openblas/Unix/0.3.6_1/include
-DEPENDPATH += $$PWD/OpenSeesLibs/openblas/Unix/0.3.6_1/include
 }
 
 
@@ -399,21 +327,11 @@ SOURCES += \
    #$$PWD/SRC/system_of_eqn/linearSOE/mumps/c_example1.cpp \
    #$$PWD/SRC/system_of_eqn/linearSOE/mumps/example.cpp \
 
-
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/Mumps/Install/lib/ -ldmumps -lmumps_common -lpord
 INCLUDEPATH += /Users/steve/Desktop/C++Libraries/Mumps/Install/include
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/Mumps/Install/include
-
-}
-else:unix: {
-
-LIBS += -L$$PWD/OpenSeesLibs/mumps/Unix/5.1.2_2/lib/ -ldmumps -lmumps_common -lpord
-INCLUDEPATH += $$PWD/OpenSeesLibs/mumps/Unix/5.1.2_2/include
-DEPENDPATH += $$PWD/OpenSeesLibs/mumps/Unix/5.1.2_2/include1
 
 }
 
@@ -446,23 +364,13 @@ SOURCES += \
    $$PWD/SRC/system_of_eqn/linearSOE/petsc/TclPetsc.cpp \
 
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS +=
 INCLUDEPATH +=
 DEPENDPATH +=
 
 }
-else:unix: {
-
-LIBS +=
-INCLUDEPATH +=
-DEPENDPATH +=
-
-}
-
 
 }
 
@@ -540,20 +448,11 @@ contains (DEFINES, _OPENMPI){
 #Set the OPAL_PREFIX environment variable in Qt Creator projects for OpenMPI if the MPI installation is moved from its original location
 #%{OPAL_PREFIX:-$$PWD/OpenSeesLibs/open-mpi/Mac/4.0.3/}
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/openmpi-4.1.1/Install/lib/ -lmpi.40 -lmca_common_sm.40 -lmca_common_monitoring.50 -lmca_common_ompio.41 -lmpi_mpifh.40 -lopen-pal.40 -lompitrace.40 -lopen-rte.40 -lmpi_usempi_ignore_tkr
 INCLUDEPATH += /Users/steve/Desktop/C++Libraries/openmpi-4.1.1/Install/include
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/openmpi-4.1.1/Install/include
-
-}
-else:unix: {
-
-LIBS += -L$$PWD/OpenSeesLibs/open-mpi/Unix/4.0.1_1/lib/ -lmpi -lmca_common_sm -lmca_common_monitoring -lmca_common_ompio -lmpi_mpifh -lopen-pal -lompitrace -lopen-rte -lmpi_usempif08
-INCLUDEPATH += $$PWD/OpenSeesLibs/open-mpi/Unix/4.0.1_1/include
-DEPENDPATH += $$PWD/OpenSeesLibs/open-mpi/Unix/4.0.1_1/include
 
 }
 
@@ -565,23 +464,12 @@ contains (DEFINES, _TCL85){
 
 QMAKE_CXXFLAGS=-I/usr/local/opt/tcl-tk/include
 
-win32:CONFIG(release, debug|release): LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/release/ -ltcl8.6
-else:win32:CONFIG(debug, debug|release): LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/debug/ -ltcl8.6
-else:macx: LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/ -ltcl8.6
-#else:unix: LIBS += -L
-
-INCLUDEPATH += /usr/local/Cellar/tcl-tk/8.6.9/include
-DEPENDPATH += /usr/local/Cellar/tcl-tk/8.6.9/include
-
-win32:CONFIG(release, debug|release): LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/release/ -ltk8.6
-else:win32:CONFIG(debug, debug|release): LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/debug/ -ltk8.6
-else:macx: LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/ -ltk8.6
+macx: LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/ -ltcl8.6
 
 INCLUDEPATH += /usr/local/Cellar/tcl-tk/8.6.9/include
 DEPENDPATH += /usr/local/Cellar/tcl-tk/8.6.9/include
 
 }
-
 
 #UMFPACK is a set of routines for solving unsymmetric sparse linear systems of the form Ax=b, using the Unsymmetric MultiFrontal method (Matrix A is not required to be symmetric).
 #Written in ANSI/ISO C
@@ -602,66 +490,18 @@ SOURCES += \
    $$PWD/SRC/system_of_eqn/linearSOE/umfGEN/UmfpackGenLinSolver.cpp \
 
 
-win32:CONFIG(release, debug|release): LIBS += -L
-else:win32:CONFIG(debug, debug|release): LIBS += -L
-else:macx: {
+macx: {
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/SuiteSparse/Install/lib/ -lumfpack -lcxsparse
 INCLUDEPATH += /Users/steve/Desktop/C++Libraries/SuiteSparse/Install/include
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuiteSparse/Install/include
 
 }
-else:unix: {
-
-LIBS += -L$$PWD/OpenSeesLibs/suite-sparse/Unix/5.3.0_1/lib/ -lumfpack -lcxsparse
-INCLUDEPATH += $$PWD/OpenSeesLibs/suite-sparse/Unix/5.3.0_1/include
-DEPENDPATH += $$PWD/OpenSeesLibs/suite-sparse/Unix/5.3.0_1/include
 
 }
 
-}
-
-
-win32:CONFIG(release, debug|release): LIBS += -L -lomp
-else:win32:CONFIG(debug, debug|release): LIBS += -L -lomp
-else:unix: LIBS += -L/Users/steve/Desktop/C++Libraries/OpenMP/Install/lib/ -lomp
 
 INCLUDEPATH += /Users/steve/Desktop/C++Libraries/OpenMP/Install/include
 DEPENDPATH += /Users/steve/Desktop/C++Libraries/OpenMP/Install/include
 
 LIBS += -L/Users/steve/Desktop/C++Libraries/GCC/GCC/lib -lgfortran.5
-
-#INCLUDEPATH += /Users/steve/Desktop/C++Libraries/GCC/GCC/lib/gcc/11
-#DEPENDPATH += /Users/steve/Desktop/C++Libraries/GCC/GCC/lib/gcc/11
-
-
-#contains (DEFINES, _USINGFORTRAN){
-
-#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../gcc/8.2.0/lib/gcc/8/release/ -lgfortran.5
-#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../gcc/8.2.0/lib/gcc/8/debug/ -lgfortran.5
-#else:macx: LIBS += -L$$PWD/../gcc/8.2.0/lib/gcc/8/ -lgfortran.5
-
-#INCLUDEPATH += $$PWD/../gcc/8.2.0/lib/gcc/8
-#DEPENDPATH += $$PWD/../gcc/8.2.0/lib/gcc/8
-
-
-#win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/OpenSeesLibs/misc/MAC/release/libgfortran.a
-#else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/OpenSeesLibs/misc/MAC/debug/libgfortran.a
-#else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/OpenSeesLibs/misc/MAC/release/gfortran.lib
-#else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/OpenSeesLibs/misc/MAC/debug/gfortran.lib
-#else:unix: PRE_TARGETDEPS += $$PWD/OpenSeesLibs/misc/MAC/libgfortran.a
-
-
-#}
-
-#contains (DEFINES, XXX){
-
-#INCLUDEPATH += \
-
-#HEADERS += \
-
-#SOURCES += \
-#}
-
-
-
