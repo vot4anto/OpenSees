@@ -1,5 +1,4 @@
 
-
 HEADERS += \
      ./SRC/interpreter/PythonModule.h \
      ./SRC/interpreter/PythonWrapper.h \

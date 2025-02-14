@@ -268,7 +268,6 @@ HEADERS += \
    $$PWD/SRC/analysis/numberer/ParallelNumberer.h \
    $$PWD/SRC/analysis/numberer/PlainNumberer.h \
    $$PWD/SRC/api/elementAPI.h \
-   $$PWD/SRC/api/packages.h \
    $$PWD/SRC/convergenceTest/ConvergenceTest.h \
    $$PWD/SRC/convergenceTest/CTestEnergyIncr.h \
    $$PWD/SRC/convergenceTest/CTestFixedNumIter.h \

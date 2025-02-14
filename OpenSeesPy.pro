@@ -49,16 +49,16 @@ INCLUDEPATH += /Library/Frameworks/Python.framework/Versions/3.10/include/python
 # MPI Settings
 contains (DEFINES, _WITHMPI){
 
-QMAKE_CXX = /opt/local/bin/mpicxx-openmpi-gcc14
-QMAKE_CXX_RELEASE = $$QMAKE_CXX
-QMAKE_CXX_DEBUG = $$QMAKE_CXX
-QMAKE_LINK = $$QMAKE_CXX
-QMAKE_CC = /opt/local/bin/mpicc-openmpi-gcc14
+#QMAKE_CXX = /opt/local/bin/mpicxx-openmpi-gcc14
+#QMAKE_CXX_RELEASE = $$QMAKE_CXX
+#QMAKE_CXX_DEBUG = $$QMAKE_CXX
+#QMAKE_LINK = $$QMAKE_CXX
+#QMAKE_CC = /opt/local/bin/mpicc-openmpi-gcc14
 
-QMAKE_CFLAGS += $$system(/opt/local/bin/mpicc-openmpi-gcc14 --showme:compile)
-QMAKE_LFLAGS += $$system(/opt/local/bin/mpicxx-openmpi-gcc14 --showme:link)
-QMAKE_CXXFLAGS += $$system(/opt/local/bin/mpicxx-openmpi-gcc14 --showme:compile) -DMPICH_IGNORE_CXX_SEEK
-QMAKE_CXXFLAGS_RELEASE += $$system(/opt/local/bin/mpicxx-openmpi-gcc14 --showme:compile) -DMPICH_IGNORE_CXX_SEEK
+#QMAKE_CFLAGS += $$system(/opt/local/bin/mpicc-openmpi-gcc14 --showme:compile)
+#QMAKE_LFLAGS += $$system(/opt/local/bin/mpicxx-openmpi-gcc14 --showme:link)
+#QMAKE_CXXFLAGS += $$system(/opt/local/bin/mpicxx-openmpi-gcc14 --showme:compile) -DMPICH_IGNORE_CXX_SEEK
+#QMAKE_CXXFLAGS_RELEASE += $$system(/opt/local/bin/mpicxx-openmpi-gcc14 --showme:compile) -DMPICH_IGNORE_CXX_SEEK
 
 }
 

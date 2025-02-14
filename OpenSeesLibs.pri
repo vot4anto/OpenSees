@@ -28,13 +28,13 @@ SOURCES += \
 
 macx: {
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/SuperLU/Install/lib/ -lsuperlu
+LIBS += -L/opt/local/lib/ -lsuperlu
 
 
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/SuperLU/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuperLU/Install/include
+INCLUDEPATH += /opt/local/include
+DEPENDPATH += /opt/local/include
 
-PRE_TARGETDEPS += /Users/steve/Desktop/C++Libraries/SuperLU/Install/lib/libsuperlu.a
+#PRE_TARGETDEPS += /Users/steve/Desktop/C++Libraries/SuperLU/Install/lib/libsuperlu.a
 
 }
 
@@ -48,12 +48,12 @@ HEADERS += \
 
 macx:{
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/SuperLUMT/Install/lib/ -lsuperlu_mt_PTHREAD
+LIBS += -L/opt/local/lib/ -lsuperlu_mt_PTHREAD
 
-#INCLUDEPATH += /Users/steve/Desktop/C++Libraries/SuperLUMT/Install/SRC
-#DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuperLUMT/Install/SRC
+INCLUDEPATH += /opt/local/include/superlu_mt/superlu_mt/
+DEPENDPATH += /opt/local/include/superlu_mt/superlu_mt/
 
-PRE_TARGETDEPS += /Users/steve/Desktop/C++Libraries/SuperLUMT/Install/lib/libsuperlu_mt_PTHREAD.a
+PRE_TARGETDEPS += /opt/local/lib/libsuperlu_mt_PTHREAD.a
 
 }
 
@@ -83,10 +83,10 @@ DEFINES += _PARMETIS
 
 macx: {
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/SuperLUDist/Install/lib/ -lsuperlu_dist
+LIBS += -L/opt/local/lib/ -lsuperlu_dist
 
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/SuperLUDist/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuperLUDist/Install/include
+INCLUDEPATH += /opt/local/include/superlu_dist/
+DEPENDPATH += /opt/local/include/superlu_dist/
 
 
 }
@@ -98,10 +98,10 @@ contains (DEFINES, _PARMETIS){
 
 macx: {
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/parmetis-4.0.3/Install/lib/ -lparmetis
+LIBS += -L/opt/local/lib/ -llibparmetis
 
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/parmetis-4.0.3/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/parmetis-4.0.3/Install/include
+INCLUDEPATH += /opt/local/include
+DEPENDPATH += /opt/local/include
 
 }
 
@@ -111,8 +111,6 @@ DEPENDPATH += /Users/steve/Desktop/C++Libraries/parmetis-4.0.3/Install/include
 #'METIS' is a type of GraphPartitioner and numberer
 #Unstructured Graph Partitioning And Sparse Matrix Ordering System', developed by G. Karypis and V. Kumar at the University of Minnesota.
 contains (DEFINES, _METIS){
-
-PATH_TO_METIS=/Users/steve/Desktop/C++Libraries/metis-5.1.0/build
 
 HEADERS += \
    $$PATH_TO_METIS/include/Metis.h \
@@ -127,12 +125,10 @@ HEADERS += \
 
 macx: {
 
-LIBS += -L$$PATH_TO_METIS/lib/ -lmetis
+LIBS += -L/opt/local/lib/ -llibmetis
 
-INCLUDEPATH +=  $$PATH_TO_METIS \
-                $$PATH_TO_METIS/include
-
-DEPENDPATH += $$PATH_TO_METIS/include
+INCLUDEPATH +=  /opt/local/include
+DEPENDPATH += /opt/local/include
 
 }
 
@@ -173,9 +169,9 @@ SOURCES += \
    $$PWD/SRC/system_of_eqn/eigenSOE/SymArpackSolver.cpp \
 
 macx: {
-LIBS += -L/Users/steve/Desktop/C++Libraries/Arpack/Install/lib/ -larpack.2 -larpack
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/Arpack/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/Arpack/Install/include
+LIBS += -L/opt/local/lib/ -llibarpack.2 -llibarpack
+INCLUDEPATH += /opt/local/include/arpack/
+DEPENDPATH += /opt/local/include/arpack/
 }
 
 }
@@ -279,10 +275,10 @@ INCLUDEPATH += /System/Library/Frameworks/Accelerate.framework/Versions/A/Framew
 DEPENDPATH  += /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A
 
 #Need to include the library below so that we do not get a blacs_gridexit error in Python. It looks like this function is not included in the accelerate framework
-LIBS += -L/Users/steve/Desktop/C++Libraries/Scalapack/Install/lib/ -lscalapack
+LIBS += -L/opt/local/lib/ -llibscalapack
 
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/Scalapack/
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/Scalapack/
+INCLUDEPATH += -L/opt/local/include
+DEPENDPATH += -L/opt/local/include
 
 }
 
@@ -300,8 +296,6 @@ INCLUDEPATH += /System/Library/Frameworks/Accelerate.framework/Versions/A/Framew
 DEPENDPATH += /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A
 
 }
-}
-
 
 }
 
@@ -329,9 +323,9 @@ SOURCES += \
 
 macx: {
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/Mumps/Install/lib/ -ldmumps -lmumps_common -lpord
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/Mumps/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/Mumps/Install/include
+LIBS += -L/opt/local/lib/ -llibdmumps -llibmumps_common -llibpord
+INCLUDEPATH += /opt/local/include
+DEPENDPATH += /opt/local/include/
 
 }
 
@@ -446,13 +440,12 @@ SOURCES += \
 contains (DEFINES, _OPENMPI){
 
 #Set the OPAL_PREFIX environment variable in Qt Creator projects for OpenMPI if the MPI installation is moved from its original location
-#%{OPAL_PREFIX:-$$PWD/OpenSeesLibs/open-mpi/Mac/4.0.3/}
 
 macx: {
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/openmpi-4.1.1/Install/lib/ -lmpi.40 -lmca_common_sm.40 -lmca_common_monitoring.50 -lmca_common_ompio.41 -lmpi_mpifh.40 -lopen-pal.40 -lompitrace.40 -lopen-rte.40 -lmpi_usempi_ignore_tkr
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/openmpi-4.1.1/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/openmpi-4.1.1/Install/include
+LIBS += -L/opt/local/lib/openmpi-gcc14/ -llibmpi.40 -llibmpi_mpifh.40 -llibopen-pal.80 -llibmpi_usempi_ignore_tkr -llibopen-pal
+INCLUDEPATH += /opt/local/include/openmpi-gcc14/
+DEPENDPATH +=  /opt/local/include/openmpi-gcc14/
 
 }
 
@@ -464,10 +457,15 @@ contains (DEFINES, _TCL85){
 
 QMAKE_CXXFLAGS=-I/usr/local/opt/tcl-tk/include
 
-macx: LIBS += -L/usr/local/Cellar/tcl-tk/8.6.9/lib/ -ltcl8.6
+macx: 
+LIBS += -L/opt/local/lib/tcl8.6/ -llibtcl8.6
+LIBS += -L/opt/local/lib/itcl4.3.2
+LIBS += -L/opt/local/lib/
+LIBS += -L/opt/local/lib/tdbc1.1.10/
+LIBS += -L/opt/local/lib/thread2.8.11
 
-INCLUDEPATH += /usr/local/Cellar/tcl-tk/8.6.9/include
-DEPENDPATH += /usr/local/Cellar/tcl-tk/8.6.9/include
+INCLUDEPATH += /opt/local/include/
+DEPENDPATH += /opt/local/include/
 
 }
 
@@ -492,16 +490,16 @@ SOURCES += \
 
 macx: {
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/SuiteSparse/Install/lib/ -lumfpack -lcxsparse
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/SuiteSparse/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/SuiteSparse/Install/include
+LIBS += -L/opt/local/lib/ -llibumfpack 
+INCLUDEPATH += /opt/local/include/
+DEPENDPATH += /opt/local/include/
 
 }
 
 }
 
 
-INCLUDEPATH += /Users/steve/Desktop/C++Libraries/OpenMP/Install/include
-DEPENDPATH += /Users/steve/Desktop/C++Libraries/OpenMP/Install/include
+INCLUDEPATH += /opt/local/include/
+DEPENDPATH += /opt/local/include/
 
-LIBS += -L/Users/steve/Desktop/C++Libraries/GCC/GCC/lib -lgfortran.5
+LIBS += -L/opt/local/lib/gcc14/ -llibgfortran.5
